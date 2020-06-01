@@ -65,7 +65,6 @@ pdepCilina raton = foldr ($) raton (map (hierbaVerde) sufijosInfecciosas)--hago 
 
 ------------------------------------PUNTO 4------------------------------------
 --Parte A--
-
 --Parte B--
 lograEstabilizar :: Medicamento->[Raton]->Bool
 lograEstabilizar medicamento = estabiliza.(map enfermedades).(map medicamento)
