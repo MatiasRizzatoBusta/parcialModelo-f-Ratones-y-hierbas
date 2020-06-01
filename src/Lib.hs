@@ -38,7 +38,7 @@ disminuyoPeso peso |peso > 2 = peso * 0.9
                    |otherwise = peso * 0.95
 
 hierbaZort :: Hierba
-hierbaZort raton = raton{nombre="Pinky",peso=0,enfermedades=[]}
+hierbaZort raton = raton{nombre="Pinky",edad=0,enfermedades=[]}
 
 hierbaDelDiablo :: Hierba
 hierbaDelDiablo raton = raton{peso= max 0 ((peso raton)-0.1),enfermedades = filter ((>10).length) (enfermedades raton) }
