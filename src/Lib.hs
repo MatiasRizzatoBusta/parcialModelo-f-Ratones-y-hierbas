@@ -53,7 +53,7 @@ reduceFatFast :: Int->Medicamento
 reduceFatFast potencia  = (hierbaVerde "idad").(alcachofaPotenciada potencia)
 
 alcachofaPotenciada :: Int->Medicamento
-alcachofaPotenciada potencia  = last.(take (potencia)).(iterate alcachofa)--no esta teniando efecto
+alcachofaPotenciada potencia  = last.(take potencia).(iterate alcachofa)--no esta teniando efecto
 --con iterate creo una lista infinita con ratones despues de pasar por alcahcofa,tomo los primeros 2 y de ahi tomo el ultimo
 --que seria el resultado de aplicarle dos veces alcachofa
 
@@ -61,12 +61,11 @@ sufijosInfecciosas = [ "sis", "itis", "emia", "cocos"]
 
 pdepCilina :: Hierba
 pdepCilina raton = foldr ($) raton (map (hierbaVerde) sufijosInfecciosas)--hago una lista con la hierba y cada terminacion
-                                                                        --y le aplico el raton. me salio d 1 #proud
 
 ------------------------------------PUNTO 4------------------------------------
 --Parte A--
-cantidadIdeal ::(Int->Bool)->Int
-cantidadIdeal condicion = head.(filter condicion)
+cantidadIdeal :: (Num a, Enum a) => (a -> Bool) -> a
+cantidadIdeal condicion = head (filter condicion [1..]) --de una lista infinita filtro al primero que cumple
 --Parte B--
 lograEstabilizar :: Medicamento->[Raton]->Bool
 lograEstabilizar medicamento = estabiliza.(map enfermedades).(map medicamento)
@@ -81,9 +80,7 @@ menosDe3Enfermedades :: [[String]]->Bool
 menosDe3Enfermedades enfermedades = all (==True )(map ((<3).length) enfermedades) 
 
 --Parte C--
---buscoPotencia ::Hierba->[Raton]->Int
---buscoPotencia hierba = sum.(map (cantidadIdeal hierba))
---Armo una lista con la cantidad que requiere cada raton y sumo estos valores.
+--cantidadIdeal (lograEstabilizar (reduceFatFast potencia hierbaVerde) comunidad)
 
 ------------------------------------PUNTO 5------------------------------------
 --Parte A--
