@@ -53,7 +53,7 @@ reduceFatFast :: Int->Medicamento
 reduceFatFast potencia  = (hierbaVerde "idad").(alcachofaPotenciada potencia)
 
 alcachofaPotenciada :: Int->Medicamento
-alcachofaPotenciada potencia  = last.(take (potencia +1)).(iterate alcachofa)--no esta teniando efecto
+alcachofaPotenciada potencia  = last.(take (potencia +1)).(iterate alcachofa)--nle hago +1 pq el primero es como viene
 --con iterate creo una lista infinita con ratones despues de pasar por alcahcofa,tomo los primeros 2 y de ahi tomo el ultimo
 --que seria el resultado de aplicarle dos veces alcachofa
 
